@@ -1,0 +1,22 @@
+{
+  "database": {
+    "driver": "mysql",
+    "username": "root",
+    "password": "e97st5n",
+    "host": "localhost",
+    "port": null,
+    "dbname": "test",
+    "unix_socket": null,
+    "charset": "utf8mb4"
+  },
+  "rpc": {
+    "modules": [
+      {
+        "name": "test",
+        "file": "./modules/class.TestModule.rpc.php",
+        "class": "Shockie\\Modules\\RPC\\TestModule_RPC",
+        "enabled": true
+      }
+    ]
+  }
+}

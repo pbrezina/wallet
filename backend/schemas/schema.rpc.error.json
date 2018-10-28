@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RPC Error",
+  "type": "object",
+  "required": [
+    "protocol",
+    "type",
+    "module",
+    "method",
+    "version",
+    "data"
+  ],
+  "properties": {
+    "protocol": {
+      "type": "integer",
+      "const": 1
+    },
+    "type": {
+      "type": "string",
+      "const": "error"
+    },
+    "module": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "data": {
+      "type": "object",
+      "title": "RPC Error Data",
+      "required": [
+        "errors",
+        "backtrace"
+      ],
+      "properties": {
+        "errors": {
+          "type": "array",
+          "title": "Caught Exceptions",
+          "items": {
+            "type": "object",
+            "title": "Exception Description",
+            "required": [
+              "class",
+              "message",
+              "code",
+              "file",
+              "line"
+            ],
+            "properties": {
+              "class": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "code": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "backtrace": {
+          "type": "array",
+          "title": "Generated Backtrace",
+          "items": {
+            "type": "object",
+            "required": [
+              "call",
+              "from",
+              "file",
+              "line"
+            ],
+            "properties": {
+              "call": {
+                "type": "string"
+              },
+              "from": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
